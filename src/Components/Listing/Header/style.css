@@ -1,0 +1,46 @@
+.listing-navbar {
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: white !important;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.listing-navbar form {
+  width: 100%;
+}
+
+.listing-navbar button {
+  background-color: transparent;
+}
+
+.listing-navbar .left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.listing-navbar svg {
+  cursor: pointer;
+}
+
+.listing-navbar .search-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: var(--gray-disabled);
+  border-radius: 10px;
+}
+
+.listing-navbar .search-container input {
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--gray-light);
+}
+
+.listing-navbar .search-container input::placeholder {
+  color: var(--gray-light);
+}
+
+.listing-navbar .search-container input {
+  outline: none;
+}
