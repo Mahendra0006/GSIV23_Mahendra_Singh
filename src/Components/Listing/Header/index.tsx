@@ -21,7 +21,7 @@ function Header({
       <Form>
         <Row>
           {setSearch && (
-            <Col xs="7">
+            <Col md="5" xs="7">
               <Row className="search-container">
                 <Col xs={'auto'}>
                   <Search className="grey-light" onClick={onClick && onClick} />

@@ -13,11 +13,11 @@ export default function Home() {
   const params = useParams()
   const dispatch = useDispatch()
   const movieDetail = useSelector((state: any) => state.data.movieDetail)
-  // const loading_movieDetail = useSelector(
-  //   (state: any) => state.data.loading_movieDetail
-  // )
+  const loading_movieDetail = useSelector(
+    (state: any) => state.data.loading_movieDetail
+  )
 
-  console.log('movieDetail', movieDetail)
+  console.log('loading_movieDetail', loading_movieDetail)
 
   useEffect(() => {
     Api('movieDetail', { id: params?.slug }, dispatch)
@@ -27,7 +27,7 @@ export default function Home() {
     'https://image.tmdb.org/t/p/w500' + movieDetail?.poster_path
 
   const number: number = movieDetail?.vote_average
-  const rating = number.toFixed(1)
+  const rating = number?.toFixed(1)
 
   return (
     <React.Fragment>
