@@ -1,10 +1,9 @@
 'use client'
 import Navbar from 'react-bootstrap/Navbar'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Home, Search } from '@mui/icons-material'
+import { Home, Search, ArrowBack } from '@mui/icons-material'
 import Link from 'next/link'
 import './style.css'
 
@@ -16,8 +15,7 @@ function Header({
   onClick?: any
   setSearch?: any
   title?: string
-  }) {
-  
+}) {
   return (
     <Navbar className="bg-body-tertiary justify-content-between listing-navbar fixed-top">
       <Form>
@@ -41,6 +39,12 @@ function Header({
           )}
           {title && (
             <Col xs="7">
+              <Link href={'/'}>
+                <ArrowBack
+                  className="grey-light"
+                  onClick={onClick && onClick}
+                />
+              </Link>
               <Form.Text className="grey">{title}</Form.Text>
             </Col>
           )}

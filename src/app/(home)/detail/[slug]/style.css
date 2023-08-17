@@ -1,0 +1,20 @@
+.movie-detail {
+  margin-top: 50px;
+}
+
+.title_text {
+  font-size: 1.5rem;
+  color: #4a4a4a;
+}
+
+.title_text span {
+  color: #9b9b9b;
+}
+
+.desc_text span {
+  color: #4a4a4a;
+}
+
+.desc_text {
+  color: #9b9b9b;
+}

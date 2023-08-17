@@ -133,4 +133,13 @@ input::-moz-focus-inner {
 
 .negetive-4 {
   margin-top: -4px;
+  color: #fbbc04;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+}
+input:focus {
+  outline: none;
 }

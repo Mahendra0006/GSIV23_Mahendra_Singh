@@ -28,7 +28,7 @@ export default function Home() {
     } else {
       Api('upcomingMovies', { page }, dispatch)
     }
-  }, [page, search])
+  }, [dispatch, page, search])
 
   useEffect(() => {
     if (search.length === 0 || search.length === 1) {
