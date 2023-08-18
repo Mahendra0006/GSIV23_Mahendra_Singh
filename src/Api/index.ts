@@ -13,7 +13,6 @@ export default async (method: string, body: any, dispatch?: any) => {
     const API: any = path
     if (API?.[method]) {
       const response = await API?.[method](body)
-      console.log(method, response)
       if (response?.success !== false) {
         dispatch &&
           dispatch(
@@ -30,7 +29,6 @@ export default async (method: string, body: any, dispatch?: any) => {
               ['loading_' + method]: false,
             })
           )
-        console.log('API_ERROR', response?.status_message)
         return null
       }
     } else {

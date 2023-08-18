@@ -10,13 +10,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Moviedata } from '@/utils/index'
 
 interface MovieState {
-  upcomingMovies: { page: number; results: Moviedata[] } // Or your specific data structure
-  // ... other properties if any
+  upcomingMovies: { page: number; results: Moviedata[] }
 }
 
 interface RootState {
   data: MovieState
-  // ... other states if any
 }
 
 const Home: React.FC = () => {
@@ -34,8 +32,6 @@ const Home: React.FC = () => {
   const loading_searchMovies = useSelector(
     (state: any) => state.data.loading_searchMovies
   )
-
-  console.log('search', searchMovies)
 
   useEffect(() => {
     if (search.length) {

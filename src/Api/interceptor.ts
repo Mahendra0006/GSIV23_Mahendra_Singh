@@ -12,7 +12,7 @@ const interceptor = (path: string, method: string, body: any) => {
         : { body }),
     }
 
-    let url: string = process.env.API_URL + (path ?? '')
+    let url = process.env.API_URL + (path ?? '')
 
     if (['head', 'get'].includes(method?.toLocaleLowerCase())) {
       const params = new URLSearchParams()
