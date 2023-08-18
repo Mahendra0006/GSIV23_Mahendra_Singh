@@ -4,7 +4,6 @@ export interface Moviedata {
   overview: string
   vote_average: number
   poster_path: string
-  e?: any
 }
 
 export interface HeaderProps {

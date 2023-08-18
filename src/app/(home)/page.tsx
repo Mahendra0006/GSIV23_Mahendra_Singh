@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Moviedata } from '@/utils/index'
 
 interface MovieState {
-  upcomingMovies: Moviedata[] // Or your specific data structure
+  upcomingMovies: { page: number; results: Moviedata[] } // Or your specific data structure
   // ... other properties if any
 }
 
@@ -22,7 +22,7 @@ interface RootState {
 const Home: React.FC = () => {
   const dispatch = useDispatch()
   const [data, setData] = useState<Moviedata[]>([])
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState<number>(1)
   const [search, setSearch] = useState<string>('')
   const upcomingMovies = useSelector(
     (state: RootState) => state?.data?.upcomingMovies
@@ -34,6 +34,8 @@ const Home: React.FC = () => {
   const loading_searchMovies = useSelector(
     (state: any) => state.data.loading_searchMovies
   )
+
+  console.log('search', searchMovies)
 
   useEffect(() => {
     if (search.length) {
@@ -105,7 +107,7 @@ const Home: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Header setSearch={setSearch} />
+      <Header setSearch={setSearch} title={''} />
       <div className="listing-container mt-5">
         <Row>
           {data?.map((e: any, key: number) => (
