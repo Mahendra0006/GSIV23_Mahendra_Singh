@@ -7,14 +7,19 @@ import { StarBorderRounded } from '@mui/icons-material'
 import { useRouter } from 'next/navigation'
 import './style.css'
 import { useCallback } from 'react'
+import { Moviedata } from '@/utils/index'
 
-function index({ e }: any) {
+interface IndexProps {
+  e: Moviedata
+}
+
+const index: React.FC<IndexProps> = ({ e }) => {
   const route = useRouter()
   const onClick = useCallback(() => {
     route?.push('detail/' + e?.id)
   }, [route, e])
 
-  const imageUrl: any = 'https://image.tmdb.org/t/p/w500' + e?.poster_path
+  const imageUrl = 'https://image.tmdb.org/t/p/w500' + e?.poster_path
 
   return (
     <Card onClick={onClick} className="movie-card no-padding">

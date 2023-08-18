@@ -6,22 +6,16 @@ import Col from 'react-bootstrap/Col'
 import { Home, Search, ArrowBack } from '@mui/icons-material'
 import Link from 'next/link'
 import './style.css'
+import { FC } from 'react'
+import { HeaderProps } from '@/utils/index'
 
-function Header({
-  onClick,
-  setSearch,
-  title,
-}: {
-  onClick?: any
-  setSearch?: any
-  title?: string
-}) {
+const Header: FC<HeaderProps> = ({ onClick, setSearch, title }) => {
   return (
     <Navbar className="bg-body-tertiary justify-content-between listing-navbar fixed-top">
       <Form>
         <Row>
           {setSearch && (
-            <Col md="5" xs="7">
+            <Col md="7" xs="5">
               <Row className="search-container">
                 <Col xs={'auto'}>
                   <Search className="grey-light" onClick={onClick && onClick} />

@@ -1,5 +1,5 @@
 'use client'
-import Image from 'next/image'
+
 import './style.css'
 import Header from '@/Components/Listing/Header'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -7,14 +7,27 @@ import { Row, Col } from 'react-bootstrap'
 import Card from '@/Components/Listing/Card'
 import Api from '@/Api'
 import { useDispatch, useSelector } from 'react-redux'
+import { Moviedata } from '@/utils/index'
 
-export default function Home() {
+interface MovieState {
+  upcomingMovies: Moviedata[] // Or your specific data structure
+  // ... other properties if any
+}
+
+interface RootState {
+  data: MovieState
+  // ... other states if any
+}
+
+const Home: React.FC = () => {
   const dispatch = useDispatch()
-  const [data, setData]: any = useState([])
+  const [data, setData] = useState<Moviedata[]>([])
   const [page, setPage] = useState(1)
-  const [search, setSearch] = useState('')
-  const upcomingMovies = useSelector((state: any) => state.data.upcomingMovies)
-  const searchMovies = useSelector((state: any) => state.data.searchMovies)
+  const [search, setSearch] = useState<string>('')
+  const upcomingMovies = useSelector(
+    (state: RootState) => state?.data?.upcomingMovies
+  )
+  const searchMovies = useSelector((state: any) => state?.data?.searchMovies)
   const loading_upcomingMovies = useSelector(
     (state: any) => state.data.loading_upcomingMovies
   )
@@ -48,7 +61,7 @@ export default function Home() {
     } else {
       if (upcomingMovies) {
         if (upcomingMovies?.page === 1) {
-          setData(upcomingMovies.results)
+          setData(upcomingMovies?.results)
         } else {
           setData((e: any) => [...e, ...upcomingMovies?.results])
         }
@@ -105,3 +118,5 @@ export default function Home() {
     </React.Fragment>
   )
 }
+
+export default Home

@@ -8,16 +8,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Col, Container, Image, Row } from 'react-bootstrap'
 import { StarBorderRounded } from '@mui/icons-material'
 import Card from 'react-bootstrap/Card'
+import { Moviedata } from '@/utils/index'
 
-export default function Home() {
+// interface IndexProps {
+//   movieDetail: Moviedata
+// }
+
+const Home: React.FC<Moviedata> = () => {
   const params = useParams()
   const dispatch = useDispatch()
-  const movieDetail = useSelector((state: any) => state.data.movieDetail)
+  const movieDetail = useSelector((state: any) => state?.data?.movieDetail)
   const loading_movieDetail = useSelector(
-    (state: any) => state.data.loading_movieDetail
+    (state: any) => state?.data?.loading_movieDetail
   )
-
-  console.log('loading_movieDetail', loading_movieDetail)
 
   useEffect(() => {
     Api('movieDetail', { id: params?.slug }, dispatch)
@@ -43,7 +46,7 @@ export default function Home() {
               style={{ objectFit: 'contain' }}
             />
           </Col>
-          <Col md={6} xs={12}>
+          <Col md={9} xs={12}>
             <h2 className="title_text">
               {movieDetail?.original_title ? movieDetail?.original_title : ''}
               <span>
@@ -77,3 +80,5 @@ export default function Home() {
     </React.Fragment>
   )
 }
+
+export default Home
