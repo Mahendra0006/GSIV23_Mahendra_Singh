@@ -1,5 +1,5 @@
 .movie-detail {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .title_text {
@@ -13,8 +13,10 @@
 
 .desc_text span {
   color: #4a4a4a;
+  text-align: justify;
 }
 
 .desc_text {
   color: #9b9b9b;
+  text-align: justify;
 }

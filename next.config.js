@@ -8,6 +8,7 @@ const nextConfig = {
       '@components': path.resolve(__dirname, 'src/components/'),
       '@Api': path.resolve(__dirname, 'src/Api/'),
       '@Redux': path.resolve(__dirname, 'src/Redux/'),
+      '@Helper': path.resolve(__dirname, 'src/Helper/'),
     },
   },
   env: {

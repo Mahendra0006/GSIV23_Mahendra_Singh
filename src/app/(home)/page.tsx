@@ -8,7 +8,7 @@ import Card from '@/Components/Listing/Card'
 import Api from '@/Api'
 import { useDispatch, useSelector } from 'react-redux'
 import { Moviedata } from '@/utils/index'
-
+import ReduxSpinner from '@/Components/Spinner/Redux'
 interface MovieState {
   upcomingMovies: { page: number; results: Moviedata[] }
 }
@@ -33,6 +33,7 @@ const Home: React.FC = () => {
     (state: any) => state.data.loading_searchMovies
   )
 
+  //loading api data
   useEffect(() => {
     if (search.length) {
       Api('searchMovies', { page, query: search }, dispatch)
@@ -41,12 +42,14 @@ const Home: React.FC = () => {
     }
   }, [dispatch, page, search])
 
+  //switching to search mode on basis of search length
   useEffect(() => {
-    if (search.length === 0 || search.length === 1) {
+    if (search.length === 0 || search.length >= 1) {
       setPage(1)
     }
   }, [search])
 
+  //appending movie data from redux to local state
   useEffect(() => {
     if (search.length) {
       if (searchMovies) {
@@ -67,6 +70,7 @@ const Home: React.FC = () => {
     }
   }, [upcomingMovies, searchMovies, search])
 
+  //loading more on reaching end
   const nextPage = useCallback(() => {
     if (search.length) {
       if (!loading_searchMovies) {
@@ -79,27 +83,27 @@ const Home: React.FC = () => {
     }
   }, [loading_upcomingMovies, loading_searchMovies, search])
 
-  useEffect(() => {
-    function handleScroll() {
-      const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+  //handle on scroll event for window
+  const handleOnScroll = useCallback(() => {
+    const windowHeight = window.innerHeight
+    const documentHeight = document.documentElement.scrollHeight
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
 
-      // console.log(scrollTop, windowHeight, documentHeight)
-      if (scrollTop + windowHeight >= documentHeight - 50) {
-        // console.log('End of scroll')
-        nextPage()
-      }
+    // console.log(scrollTop, windowHeight, documentHeight)
+    if (scrollTop + windowHeight >= documentHeight - 50) {
+      // console.log('End of scroll')
+      nextPage()
     }
+  }, [nextPage])
 
-    // Add the event listener
-    window.addEventListener('scroll', handleScroll)
+  useEffect(() => {
+    window.addEventListener('scroll', handleOnScroll)
 
     // Clean up the event listener on unmount
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', handleOnScroll)
     }
-  }, [nextPage])
+  }, [handleOnScroll])
 
   return (
     <React.Fragment>
@@ -112,6 +116,9 @@ const Home: React.FC = () => {
             </Col>
           ))}
         </Row>
+        <ReduxSpinner
+          loading={!!loading_upcomingMovies || !!loading_searchMovies}
+        />
       </div>
     </React.Fragment>
   )

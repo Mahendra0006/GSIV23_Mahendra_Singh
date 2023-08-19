@@ -39,7 +39,7 @@ const Header: FC<HeaderProps> = ({ onClick, setSearch, title }) => {
                   onClick={onClick && onClick}
                 />
               </Link>
-              <Form.Text className="grey">{title}</Form.Text>
+              <Form.Text className="grey header-title">{title}</Form.Text>
             </Col>
           )}
           <Col className="left" xs="5">

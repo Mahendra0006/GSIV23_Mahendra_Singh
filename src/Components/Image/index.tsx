@@ -1,12 +1,19 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import react, { memo, useState, useEffect, useCallback } from 'react'
+import react, {
+  memo,
+  useState,
+  useEffect,
+  useCallback,
+  CSSProperties,
+} from 'react'
 
 interface props {
   src: string //image source url
   fallbackSrc?: string //fallback image url
   alt?: string //image alt-text
   [key: string]: any //other image props
+  style: CSSProperties
 }
 
 const Image = ({ src, fallbackSrc, ...imageProps }: props) => {
