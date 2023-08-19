@@ -8,11 +8,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Col, Container, Row } from 'react-bootstrap'
 import { StarBorderRounded } from '@mui/icons-material'
 import ReduxSpinner from '@/Components/Spinner/Redux'
-import { Moviedata } from '@/utils/index'
 import Image from '@/Components/Image'
 import moment from 'moment'
 
-const Home: React.FC<Moviedata> = () => {
+const Home = () => {
   const params = useParams()
   const dispatch = useDispatch()
   const movieDetail = useSelector((state: any) => state?.data?.movieDetail)
@@ -24,8 +23,11 @@ const Home: React.FC<Moviedata> = () => {
     Api('movieDetail', { id: params?.slug }, dispatch)
   }, [dispatch, params?.slug])
 
-  const rating = useMemo(
-    () => Number(movieDetail?.vote_average ?? 0)?.toFixed(1),
+  const rating: string = useMemo(
+    () =>
+      Number(movieDetail?.vote_average ?? 0)
+        ?.toFixed(1)
+        ?.toString(),
     [movieDetail?.vote_average]
   )
 
@@ -59,8 +61,8 @@ const Home: React.FC<Moviedata> = () => {
               <h2 className="title_text">
                 {movieDetail?.original_title ? movieDetail?.original_title : ''}
                 <span>
-                  ({rating}
-                  <StarBorderRounded className="negetive-4" />)
+                  {rating}
+                  <StarBorderRounded className="negetive-4" />
                 </span>
               </h2>
               <p className="desc_text">
