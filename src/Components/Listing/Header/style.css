@@ -44,3 +44,7 @@
 .listing-navbar .search-container input {
   box-shadow: none;
 }
+
+.search-container .col {
+  padding-left: 0 !important;
+}

@@ -8,24 +8,25 @@ import { useRouter } from 'next/navigation'
 import './style.css'
 import { useCallback } from 'react'
 import { Moviedata } from '@/utils/index'
-
+import Image from '@/Components/Image'
 interface IndexProps {
   e: Moviedata
 }
 
 const index: React.FC<IndexProps> = ({ e }) => {
   const route = useRouter()
+
   const onClick = useCallback(() => {
     route?.push('detail/' + e?.id)
   }, [route, e])
 
-  const imageUrl = 'https://image.tmdb.org/t/p/original' + e?.poster_path
-
   return (
     <Card onClick={onClick} className="movie-card no-padding">
-      <Card.Img
-        variant="top"
-        src={imageUrl ? imageUrl : ''}
+      <Image
+        alt={e?.original_title}
+        fallbackSrc="/image/movie.png"
+        className={'card-img-top'}
+        src={'https://image.tmdb.org/t/p/original' + e?.poster_path}
         height={240}
         style={{ objectFit: 'cover' }}
       />
