@@ -38,7 +38,6 @@ export default async (method: string, body: any, dispatch?: any) => {
             ['loading_' + method]: false,
           })
         )
-      console.log('Invalid api method', method)
       return null
     }
   } catch (e: any) {

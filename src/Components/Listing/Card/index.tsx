@@ -19,7 +19,7 @@ const index: React.FC<IndexProps> = ({ e }) => {
     route?.push('detail/' + e?.id)
   }, [route, e])
 
-  const imageUrl = 'https://image.tmdb.org/t/p/w500' + e?.poster_path
+  const imageUrl = 'https://image.tmdb.org/t/p/original' + e?.poster_path
 
   return (
     <Card onClick={onClick} className="movie-card no-padding">

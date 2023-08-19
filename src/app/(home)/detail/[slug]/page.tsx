@@ -10,10 +10,6 @@ import { StarBorderRounded } from '@mui/icons-material'
 import Card from 'react-bootstrap/Card'
 import { Moviedata } from '@/utils/index'
 
-// interface IndexProps {
-//   movieDetail: Moviedata
-// }
-
 const Home: React.FC<Moviedata> = () => {
   const params = useParams()
   const dispatch = useDispatch()
@@ -22,12 +18,14 @@ const Home: React.FC<Moviedata> = () => {
     (state: any) => state?.data?.loading_movieDetail
   )
 
+  console.log('loading', loading_movieDetail)
+
   useEffect(() => {
     Api('movieDetail', { id: params?.slug }, dispatch)
   }, [dispatch, params?.slug])
 
   const imageUrl: any =
-    'https://image.tmdb.org/t/p/w500' + movieDetail?.poster_path
+    'https://image.tmdb.org/t/p/original' + movieDetail?.poster_path
 
   const number: number = movieDetail?.vote_average
   const rating = number?.toFixed(1)
