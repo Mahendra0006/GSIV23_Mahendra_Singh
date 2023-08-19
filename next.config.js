@@ -17,6 +17,7 @@ const nextConfig = {
     ACCESS_TOKEN:
       'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YzU5OTNjMTljNGI2NDUyNmI5ODJjMjAwYjNhZWNmMiIsInN1YiI6IjY0NmNhM2Q5MzNhMzc2MDE3NWQ0NjQwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XRCpHyoa1k_GXwWtPiIMYyfOLbHKxtiR8j_WMiojZaA',
   },
+  output: 'export',
 }
 
 module.exports = nextConfig
