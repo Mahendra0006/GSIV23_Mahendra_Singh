@@ -109,13 +109,18 @@ const Home: React.FC = () => {
     <React.Fragment>
       <Header setSearch={setSearch} title={''} />
       <div className="listing-container mt-5">
-        <Row>
-          {data?.map((e: any, key: number) => (
-            <Col md={3} key={key}>
-              <Card e={e} />
-            </Col>
-          ))}
-        </Row>
+        {page === 1 && (!!loading_upcomingMovies || !!loading_searchMovies) ? (
+          <></>
+        ) : (
+          <Row>
+            {data?.map((e: any, key: number) => (
+              <Col md={3} key={key}>
+                <Card e={e} />
+              </Col>
+            ))}
+          </Row>
+        )}
+
         <ReduxSpinner
           loading={!!loading_upcomingMovies || !!loading_searchMovies}
         />

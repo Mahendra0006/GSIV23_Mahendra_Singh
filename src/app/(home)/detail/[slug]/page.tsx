@@ -61,8 +61,8 @@ const Home = () => {
               <h2 className="title_text">
                 {movieDetail?.original_title ? movieDetail?.original_title : ''}
                 <span>
-                  {rating}
-                  <StarBorderRounded className="negetive-4" />
+                  ({rating}
+                  <StarBorderRounded className="negetive-4" />)
                 </span>
               </h2>
               <p className="desc_text">
